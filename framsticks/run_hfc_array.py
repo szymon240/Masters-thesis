@@ -187,8 +187,6 @@ def main():
     run_runtimes = global_state.get("run_runtimes", [])
     run_seeds = global_state.get("run_seeds", [])
 
-    # Seedy: paczka 10 unikalnych dla kazdej kombinacji, offset algorytmu = 300000 (HFC)
-    # Zakres: 300000 .. 302159 (216 kombinacji x 10 runow). Brak nakladek z innymi algorytmami.
     base_seed = 300000 + (args.array_id * NUMBER_OF_RUNS)
     start_time = time.time()
     if not global_state.get("timestamp_start_iso"):

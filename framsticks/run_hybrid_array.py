@@ -23,7 +23,7 @@ from hybrid_frams import run_hybrid
 FRAMS_DIR = "Framsticks54/Framsticks54"
 EVALUATIONS_BUDGET = 700000
 NUMBER_OF_RUNS = 10
-MID_CHECKPOINT_INTERVAL = 150000  # Co ile ewaluacji emitowac mid-run checkpoint (150k = ~1-2h)
+MID_CHECKPOINT_INTERVAL = 150000
 SIM_SETTINGS = "eval-allcriteria-mini.sim;deterministic.sim;sample-period-longest.sim;simulation-2000-steps.sim"
 
 RESULTS_DIR = Path("hybrid_grid_results_v2")
@@ -31,7 +31,6 @@ CHECKPOINT_DIR = Path("hybrid_checkpoints_v2")
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Identyczna siatka jak ConvSel/HFC dla pelnej porownywalnosci (216 combos)
 pop_sizes = [200, 500, 1000]
 tournament_sizes = [2, 5, 8]
 cx_probs = [0.3, 0.6, 0.9]
@@ -186,8 +185,6 @@ def main():
     per_run_mid_state = global_state["per_run_mid_state"]
     per_run_completed_budget = global_state["per_run_completed_budget"]
 
-    # Seedy: paczka 10 unikalnych dla kazdej kombinacji, offset algorytmu = 700000 (Hybrid)
-    # Zakres: 700000 .. 702159 (216 kombinacji x 10 runow). Brak nakladek z innymi algorytmami.
     base_seed = 700000 + (args.array_id * NUMBER_OF_RUNS)
     start_time = time.time()
     if not global_state.get("timestamp_start_iso"):

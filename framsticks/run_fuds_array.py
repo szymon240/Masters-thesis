@@ -180,8 +180,6 @@ def main():
     per_run_mid_state = global_state["per_run_mid_state"]
     per_run_completed_budget = global_state["per_run_completed_budget"]
 
-    # Seedy: paczka 10 unikalnych dla kazdej kombinacji, offset algorytmu = 600000 (FUDS)
-    # Zakres: 600000 .. 600539 (54 kombinacji x 10 runow). Brak nakladek z innymi algorytmami.
     base_seed = 600000 + (args.array_id * NUMBER_OF_RUNS)
     start_time = time.time()
     if not global_state.get("timestamp_start_iso"):
