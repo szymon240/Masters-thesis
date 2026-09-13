@@ -92,7 +92,6 @@ def frams_evaluate(individual):
         return
 
     try:
-        # KLUCZOWA POPRAWKA F1: Wymuszenie parsowania drzewiastego prefiksem /*1*/
         results = global_framsLib.evaluate([f"/*1*/{individual.genotype}"])
     except Exception as e:
         print(f"BŁĄD KRYTYCZNY SYMULATORA: {e}")
